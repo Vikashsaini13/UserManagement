@@ -7,15 +7,16 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.time.LocalDate;
 
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 public class User {
-
+    @NonNull
     private Integer userId;
 
     @NotEmpty
@@ -25,7 +26,7 @@ public class User {
     private String userEmail;
     private String password;
 
-//    @Pattern(regexp = "\\d{10}")
+    @Pattern(regexp = "\\d{10}")
     private String userContact;
     private Integer userAge;
     private LocalDate userDOB;

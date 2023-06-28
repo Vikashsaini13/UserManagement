@@ -30,4 +30,38 @@ public class UserService {
         return "new user added successfully";
 
     }
+
+    public User getAllUserById(Integer id) {
+        List<User> originalList=getAllUsers();
+        for(User user : originalList){
+            if(user.getUserId().equals(id)){
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    public String deleteUserById(Integer id) {
+        List<User> originalList=getAllUsers();
+        for(User user : originalList){
+            if(user.getUserId().equals(id)){
+                originalList.remove(user);
+                return "user removed successfully";
+            }
+        }
+        return "user not found";
+    }
+
+    public String updateUserInfo(Integer id, String name, String pNo) {
+        List<User> originalList=getAllUsers();
+        for(User user : originalList){
+            if(user.getUserId().equals(id)){
+                user.setUserName(name);
+                user.setUserContact(pNo);
+                return "user Info updated successfully";
+            }
+        }
+        return "user not found";
+    }
 }
